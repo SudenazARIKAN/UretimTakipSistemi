@@ -1,0 +1,33 @@
+@model List<UretimTakipSistemi.Models.UretimOperasyon>
+
+<h2>Üretim Operasyonları</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Kayıt No</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>Toplam Süre</th>
+            <th>Statü</th>
+            <th>Duruş Nedeni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.KayitNo</td>
+                <td>@item.Baslangic.ToString("yyyy-MM-dd HH:mm")</td>  <!-- Tarih + Saat -->
+                <td>@item.Bitis.ToString("yyyy-MM-dd HH:mm")</td>      <!-- Tarih + Saat -->
+                <td>
+                    @(item.ToplamSure != null 
+                        ? item.ToplamSure.ToString() 
+                        : "-")
+                </td>
+                <td>@item.Statu</td>
+                <td>@item.DurusNedeni</td>
+            </tr>
+        }
+    </tbody>
+</table>
